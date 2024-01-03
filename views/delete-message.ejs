@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Delete Message</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="icon" href="/images/lock-svgrepo-com.svg"/>
+  </head>
+  <body>
+    <%- include("./components/navbar.ejs")%>
+
+    <main>        
+      <h1 style="text-align: center;">Delete This Message?</h1>
+      <div class="message-column">
+        <% if (message._id === message._id) { %>
+          <div class="message-container">
+            <h3><%= message.title %></h3>
+            <p>Message: <%= message.message %></p>
+            <p>Posted: <%= message.post_date_formatted %></p>
+            <form method="POST", action="/delete-message/<%=message._id%>">
+              <button class="delete-btn" type="submit">Delete</button>
+            </form>
+          </div>
+        <% } %>
+      </div>
+    </main>
+  </body>
+</html>

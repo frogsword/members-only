@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Become An Admin</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include("./components/navbar.ejs")%>
+
+    <h1>enter the correct code to become an admin:</h1>
+    
+    <% if(errMsg) {%>
+        <p><%=errMsg%></p>
+    <%}%>
+
+    <form id="become-admin-form" action="/become-admin" method="POST">
+        <label for="code">Code:</label>
+        <input id="code-input" name="code" type="text" placeholder="Secret Code">
+        <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

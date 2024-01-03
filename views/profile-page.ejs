@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= user.username %>'s Profile</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="icon" href="/images/lock-svgrepo-com.svg"/>
+  </head>
+  <body>
+    <%- include("./components/navbar.ejs")%>
+    <main>
+      <div class="message-column">
+        <h1><%= user.username %>'s Profile</h1>
+        <% if (user.isAdmin) {%>
+          <h1 style="color: red;">ADMINISTRATOR</h1>
+        <%} else {%>
+            <!-- <a href="/become-admin" style="color: red;">Enter Admin Code</a> -->
+        <%}%>
+          
+          <% userMessages.map(msg => {%>
+            <div class="message-container">
+              <h3><%= msg.title %></h3>
+              <p>Message: <%= msg.message %></p>
+              <p>Posted: <%= msg.post_date_formatted %></p>
+              <form method="GET", action="/delete-message/<%=msg._id%>">
+                <button class="delete-btn" type="submit">Delete</button>
+              </form>
+            </div>
+          <% }) %>
+      </div>
+    </main>
+  </body>
+</html>
